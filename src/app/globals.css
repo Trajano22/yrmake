@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Paleta Granat — identidade YR Make */
+@theme {
+  --color-granat-950: #2b0710;
+  --color-granat-800: #5c0f21;
+  --color-granat-700: #921733;
+  --color-granat-600: #c82a4c;
+  --color-granat-400: #e4677f;
+  --color-granat-200: #f2a9b7;
+  --color-granat-50: #fce3e8;
+  --color-blush: #fdf3f5;
+  --color-ink: #2b0710;
+  --color-muted: #7a5560;
+  --color-line: #f1dbe0;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-script: var(--font-vibes), "Great Vibes", cursive;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-granat-200);
+  color: var(--color-granat-950);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-granat-700 text-white shadow-[0_8px_24px_-12px_rgba(146,23,51,0.7)] hover:bg-granat-800 active:scale-[0.98];
+}
+@utility btn-outline {
+  @apply btn border border-granat-700/30 text-granat-700 hover:border-granat-700 hover:bg-granat-50;
+}
+@utility btn-whatsapp {
+  @apply btn bg-[#1f9d55] text-white hover:bg-[#178246] active:scale-[0.98];
+}
+@utility input {
+  @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink outline-none transition placeholder:text-muted/60 focus:border-granat-400 focus:ring-4 focus:ring-granat-50;
+}
+@utility label {
+  @apply mb-1.5 block text-xs font-medium uppercase tracking-[0.14em] text-muted;
+}
+@utility eyebrow {
+  @apply text-[11px] font-medium uppercase tracking-[0.32em] text-granat-700;
+}
+@utility container-x {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+}
