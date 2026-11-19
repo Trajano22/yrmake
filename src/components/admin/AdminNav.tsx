@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Boxes, ExternalLink, LayoutDashboard, LogOut, Menu, Package, Settings, ShoppingBag, Tags, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { signOut } from "@/app/admin/actions/auth";
 
 const ROLE = { owner: "Proprietária", manager: "Gerente", staff: "Funcionária" } as const;
@@ -56,10 +55,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
   const footer = (
     <div className="border-t border-line pt-4">
       <p className="truncate text-sm font-medium text-ink">{name}</p>
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-muted">{ROLE[role]}</p>
-        <ThemeToggle className="hidden lg:inline-flex" />
-      </div>
+      <p className="text-xs text-muted">{ROLE[role]}</p>
       <form action={signOut}>
         <button className="mt-3 inline-flex items-center gap-2 text-sm text-granat-700 hover:underline">
           <LogOut size={15} /> Sair
@@ -77,7 +73,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
         <span className="font-serif text-2xl font-semibold tracking-[-0.05em]">
           YR <span className="font-script text-lg font-normal text-granat-600">painel</span>
         </span>
-        <ThemeToggle />
+        <span className="w-8" />
       </div>
       {open && (
         <div className="fixed inset-0 z-40 lg:hidden">

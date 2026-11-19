@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import type { CatalogCategory } from "@/lib/types";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useCart } from "./CartProvider";
 import { Logo } from "./Logo";
 
@@ -68,7 +67,6 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
           </div>
           <Logo size="sm" />
           <div className="flex items-center justify-end gap-1">
-            <ThemeToggle />
             <button
               type="button"
               aria-label="Buscar"

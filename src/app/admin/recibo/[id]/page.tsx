@@ -60,7 +60,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
   ].join("\n");
 
   return (
-    <div className="force-light min-h-dvh bg-page-soft px-4 py-6 text-ink print:bg-[#fff] print:p-0">
+    <div className="min-h-dvh bg-page-soft px-4 py-6 text-ink print:bg-[#fff] print:p-0">
       <div className="mx-auto max-w-xl">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3 print:hidden">
           <Link href={`/admin/pedidos/${o.id}`} className="inline-flex items-center gap-1 text-sm text-muted hover:text-granat-700">

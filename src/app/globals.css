@@ -37,65 +37,6 @@
   }
 }
 
-/* ---------- Modo escuro: os tons profundos da paleta ---------- */
-html.dark {
-  color-scheme: dark;
-  --color-page: #1a050a;
-  --color-page-soft: #1f060c;
-  --color-surface: #2b0710;
-  --color-ink: #fce3e8;
-  --color-muted: #e4a3b1;
-  --color-line: #4d1323;
-  --color-blush: #2b0710;
-  --color-tint: #5c0f21;
-  --color-deep: #5c0f21;
-  --color-hero-a: #5c0f21;
-  --color-hero-b: #2b0710;
-  --color-hero-c: #921733;
-  /* no escuro, os tons de destaque sobem para os rosas da paleta (contraste) */
-  --color-granat-800: #c82a4c;
-  --color-granat-700: #e4677f;
-  --color-granat-600: #f2a9b7;
-  --color-granat-400: #e4677f;
-  --color-granat-200: #921733;
-}
-
-/* textos de status legíveis no fundo escuro */
-html.dark .text-emerald-700 { color: #7ee2a8; }
-html.dark .text-amber-700 { color: #f5c97a; }
-html.dark .force-light .text-emerald-700 { color: #047857; }
-html.dark .force-light .text-amber-700 { color: #b45309; }
-
-/* Recibo e impressão: sempre claros */
-html.dark .force-light,
-.force-light {
-  color-scheme: light;
-  --color-page: #ffffff;
-  --color-page-soft: #fbf3f5;
-  --color-surface: #ffffff;
-  --color-ink: #2b0710;
-  --color-muted: #7a5560;
-  --color-line: #f1dbe0;
-  --color-blush: #fdf0f3;
-  --color-tint: #fce3e8;
-  --color-deep: #2b0710;
-  --color-granat-800: #5c0f21;
-  --color-granat-700: #921733;
-  --color-granat-600: #c82a4c;
-  --color-granat-400: #e4677f;
-  --color-granat-200: #f2a9b7;
-}
-@media print {
-  html.dark {
-    color-scheme: light;
-    --color-page: #ffffff;
-    --color-surface: #ffffff;
-    --color-ink: #2b0710;
-    --color-muted: #7a5560;
-    --color-line: #f1dbe0;
-  }
-}
-
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -106,7 +47,6 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .font-script {
