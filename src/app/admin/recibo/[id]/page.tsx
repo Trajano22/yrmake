@@ -7,6 +7,8 @@ import { requireStaff } from "@/lib/auth";
 import { brl } from "@/lib/money";
 import { PAYMENT_LABEL } from "@/lib/types";
 
+import { BrandLogo } from "@/components/store/Logo";
+
 export const metadata: Metadata = { title: "Recibo", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
@@ -78,8 +80,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
         <article className="relative overflow-hidden rounded-[28px] border border-line bg-surface p-7 shadow-[0_30px_80px_-50px_rgba(146,23,51,0.5)] print:rounded-none print:border-0 print:shadow-none">
           <header className="flex items-start justify-between gap-4 border-b border-line pb-5">
             <div>
-              <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-ink">YR</p>
-              <p className="mt-1 font-serif text-[10px] uppercase tracking-[0.28em] text-ink">Make e Variedades</p>
+              <BrandLogo className="h-20" priority />
               <div className="mt-3 space-y-0.5 text-[11px] text-muted">
                 {(s?.address || s?.city) && <p>{[s?.address, s?.city].filter(Boolean).join(" · ")}</p>}
                 {s?.whatsapp && <p>WhatsApp {phone(s.whatsapp)}</p>}

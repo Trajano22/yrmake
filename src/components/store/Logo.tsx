@@ -1,21 +1,35 @@
 import Link from "next/link";
 
-export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const yr = size === "lg" ? "text-6xl" : size === "sm" ? "text-3xl" : "text-4xl";
-  const sub = size === "lg" ? "text-[11px]" : "text-[8.5px]";
+/** Logo oficial da YR Make e Variedades (public/brand). */
+export function BrandLogo({
+  variant = "dark",
+  className = "h-14",
+  priority = false,
+}: {
+  variant?: "dark" | "light";
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <Link href="/" aria-label="YR Make e Variedades — início" className="group inline-flex flex-col items-center leading-none">
-      <span className={`relative font-serif font-semibold tracking-[-0.06em] text-ink ${yr}`}>
-        YR
-        <svg
-          aria-hidden
-          viewBox="0 0 120 30"
-          className="pointer-events-none absolute bottom-[12%] left-1/2 w-[150%] -translate-x-1/2 text-granat-400 transition group-hover:text-granat-600"
-        >
-          <path d="M2 22 C 30 30, 60 4, 118 10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        </svg>
-      </span>
-      <span className={`mt-1.5 font-serif uppercase tracking-[0.28em] text-ink ${sub}`}>Make e Variedades</span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={variant === "light" ? "/brand/logo-claro.png" : "/brand/logo.png"}
+      alt="YR Make e Variedades"
+      width={447}
+      height={292}
+      loading={priority ? "eager" : "lazy"}
+      decoding="async"
+      className={`w-auto select-none ${className}`}
+      draggable={false}
+    />
+  );
+}
+
+export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const h = size === "lg" ? "h-28" : size === "sm" ? "h-[68px]" : "h-20";
+  return (
+    <Link href="/" aria-label="YR Make e Variedades — início" className="inline-flex items-center transition hover:opacity-85">
+      <BrandLogo className={h} priority />
     </Link>
   );
 }

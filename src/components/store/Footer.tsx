@@ -3,14 +3,15 @@ import { AtSign, MapPin, MessageCircle } from "lucide-react";
 import type { CatalogCategory, PublicSettings } from "@/lib/types";
 import { whatsappLink } from "@/lib/whatsapp";
 
+import { BrandLogo } from "@/components/store/Logo";
+
 export function Footer({ settings, categories }: { settings: PublicSettings; categories: CatalogCategory[] }) {
   const ig = settings.instagram.replace(/^@/, "");
   return (
     <footer className="mt-24 bg-deep text-granat-50">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <p className="font-serif text-4xl font-semibold tracking-[-0.05em] text-white">YR</p>
-          <p className="mt-1 font-serif text-xs uppercase tracking-[0.3em]">Make e Variedades</p>
+          <BrandLogo variant="light" className="h-24" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#f2a9b7]">
             {settings.about ||
               "Maquiagens, skincare e acessórios escolhidos com carinho. Peça pelo site e receba em casa ou retire com a gente."}

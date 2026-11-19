@@ -1,9 +1,11 @@
 import Link from "next/link";
 
+import { BrandLogo } from "@/components/store/Logo";
+
 export default function NotFound() {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center bg-[linear-gradient(180deg,var(--color-hero-b)_0%,var(--color-page)_70%)] px-4 text-center">
-      <p className="font-serif text-7xl font-semibold tracking-[-0.06em] text-ink">YR</p>
+      <BrandLogo className="h-32" priority />
       <p className="mt-2 font-script text-4xl text-granat-600">ops, não achamos</p>
       <p className="mt-4 text-sm text-muted">Essa página não existe ou o produto saiu da loja.</p>
       <Link href="/produtos" className="btn-primary mt-8">

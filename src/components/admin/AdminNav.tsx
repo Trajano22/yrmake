@@ -8,6 +8,8 @@ import { signOut } from "@/app/admin/actions/auth";
 
 const ROLE = { owner: "Proprietária", manager: "Gerente", staff: "Funcionária" } as const;
 
+import { BrandLogo } from "@/components/store/Logo";
+
 export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
@@ -71,7 +73,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
           <Menu size={22} />
         </button>
         <span className="font-serif text-2xl font-semibold tracking-[-0.05em]">
-          YR <span className="font-script text-lg font-normal text-granat-600">painel</span>
+          <BrandLogo className="inline h-9" />
         </span>
         <span className="w-8" />
       </div>
@@ -80,7 +82,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
           <button aria-label="Fechar" className="absolute inset-0 bg-deep/40" onClick={() => setOpen(false)} />
           <aside className="absolute inset-y-0 left-0 flex w-72 flex-col gap-6 bg-surface p-5">
             <div className="flex items-center justify-between">
-              <span className="font-serif text-3xl font-semibold tracking-[-0.05em]">YR</span>
+              <BrandLogo className="h-12" />
               <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full p-2 hover:bg-tint">
                 <X size={20} />
               </button>
@@ -92,8 +94,8 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
       )}
       <aside className="sticky top-0 hidden h-dvh flex-col gap-8 border-r border-line bg-surface p-5 lg:flex">
         <div className="px-2 pt-2">
-          <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-ink">YR</p>
-          <p className="font-script text-xl text-granat-600">painel</p>
+          <BrandLogo className="h-16" />
+          <p className="mt-1 text-[10px] uppercase tracking-[0.28em] text-muted">Painel</p>
         </div>
         {nav}
         {footer}

@@ -40,7 +40,7 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
   return (
     <header className="sticky top-0 z-40">
       <div className="border-b border-line bg-surface/90 backdrop-blur-md">
-        <div className="container-x grid h-20 grid-cols-[1fr_auto_1fr] items-center">
+        <div className="container-x grid h-[84px] grid-cols-[1fr_auto_1fr] items-center">
           <div className="flex items-center gap-1">
             <button
               type="button"

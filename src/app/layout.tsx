@@ -15,7 +15,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "YR Make e Variedades", template: "%s · YR Make e Variedades" },
   description: "Maquiagens, skincare e acessórios. Peça pelo site e receba em casa ou retire na loja.",
-  openGraph: { type: "website", locale: "pt_BR", siteName: "YR Make e Variedades" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "YR Make e Variedades",
+    images: [{ url: "/brand/logo-original.jpg", width: 475, height: 318, alt: "YR Make e Variedades" }],
+  },
 };
 
 export const viewport: Viewport = { themeColor: "#ffffff" };
