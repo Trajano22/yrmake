@@ -8,7 +8,7 @@ import type { CatalogCategory } from "@/lib/types";
 import { useCart } from "./CartProvider";
 import { Logo } from "./Logo";
 
-export function Header({ categories, notice }: { categories: CatalogCategory[]; notice: string }) {
+export function Header({ categories }: { categories: CatalogCategory[] }) {
   const { count, ready, lastAdded } = useCart();
   const [open, setOpen] = useState(false);
   const [searching, setSearching] = useState(false);
@@ -39,9 +39,6 @@ export function Header({ categories, notice }: { categories: CatalogCategory[]; 
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="bg-granat-950 px-4 py-2 text-center text-[11px] tracking-[0.18em] text-granat-50 uppercase">
-        {notice}
-      </div>
       <div className="border-b border-line bg-white/90 backdrop-blur-md">
         <div className="container-x grid h-20 grid-cols-[1fr_auto_1fr] items-center">
           <div className="flex items-center gap-1">

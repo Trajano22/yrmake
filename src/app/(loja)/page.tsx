@@ -15,12 +15,12 @@ export default async function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fce3e8_0%,#fdf3f5_55%,#ffffff_100%)]">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fce3e8_0%,#fdf3f5_50%,#ffffff_92%)]">
         <Sparkle className="left-[8%] top-[18%] h-6 w-6" />
         <Sparkle className="right-[10%] top-[12%] h-8 w-8" />
         <Sparkle className="right-[22%] bottom-[22%] h-4 w-4" />
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-granat-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-granat-50 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-granat-50 blur-3xl" />
 
         <div className="container-x relative flex flex-col items-center py-16 text-center sm:py-24">
           <p className="eyebrow animate-fade-up">Maquiagem · Skincare · Acessórios</p>
@@ -57,7 +57,7 @@ export default async function Home() {
 
       {/* CATEGORIAS */}
       {categories.length > 0 && (
-        <section className="container-x -mt-2 pb-4">
+        <section className="container-x pb-4 pt-8">
           <div className="-mx-4 flex snap-x gap-2.5 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:flex-wrap sm:justify-center">
             {categories.map((c) => (
               <Link
