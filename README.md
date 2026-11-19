@@ -1,5 +1,7 @@
 # YR Make e Variedades — loja online (Fase 1)
 
+**No ar:** https://yrmake.yrmake.workers.dev
+
 Loja de maquiagem com pedido pelo WhatsApp e painel para produtos, tons, estoque e pedidos.
 
 - **Site:** Next.js 15 + Tailwind 4, hospedado no **Cloudflare Workers** (via OpenNext)
