@@ -132,7 +132,7 @@ function VariantFields({ v, onChange, showColor = true }: { v: VariantDraft; onC
               aria-label="Cor do tom"
               value={v.color_hex || "#fce3e8"}
               onChange={(e) => set("color_hex", e.target.value)}
-              className="h-[46px] w-12 shrink-0 cursor-pointer rounded-xl border border-line bg-white p-1"
+              className="h-[46px] w-12 shrink-0 cursor-pointer rounded-xl border border-line bg-surface p-1"
             />
           )}
           <input required maxLength={60} value={v.name} onChange={(e) => set("name", e.target.value)} className="input" placeholder="Ex.: Rosa Granada" />
@@ -191,10 +191,10 @@ export function NewProductForm({ categories }: { categories: Category[] }) {
       }}
       className="max-w-3xl space-y-6"
     >
-      <div className="rounded-[24px] border border-line bg-white p-5">
+      <div className="rounded-[24px] border border-line bg-surface p-5">
         <ProductFields value={product} onChange={setProduct} categories={categories} />
       </div>
-      <div className="rounded-[24px] border border-line bg-white p-5">
+      <div className="rounded-[24px] border border-line bg-surface p-5">
         <h2 className="font-serif text-2xl">Primeiro tom / variação</h2>
         <p className="mb-4 text-xs text-muted">Produto sem tons? Deixe “Único”.</p>
         <VariantFields v={variant} onChange={setVariant} />
@@ -323,7 +323,7 @@ function VariantCard({ productId, row, canEdit }: { productId: string; row: Vari
           {row.reserved > 0 && <span className="block text-[11px] text-muted">{row.reserved} reservado</span>}
         </span>
         {canEdit && (
-          <span className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-granat-950">
+          <span className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-ink">
             <Pencil size={12} /> {open ? "Fechar" : "Editar"}
           </span>
         )}
@@ -360,7 +360,7 @@ function VariantCard({ productId, row, canEdit }: { productId: string; row: Vari
                   if (r.ok) router.refresh();
                 });
               }}
-              className="btn py-2.5 text-granat-700 hover:bg-granat-50"
+              className="btn py-2.5 text-granat-700 hover:bg-tint"
             >
               <Trash2 size={15} /> Excluir tom
             </button>

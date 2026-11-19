@@ -60,7 +60,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
   ].join("\n");
 
   return (
-    <div className="min-h-dvh bg-[#fbf7f8] px-4 py-6 print:bg-white print:p-0">
+    <div className="force-light min-h-dvh bg-page-soft px-4 py-6 text-ink print:bg-[#fff] print:p-0">
       <div className="mx-auto max-w-xl">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3 print:hidden">
           <Link href={`/admin/pedidos/${o.id}`} className="inline-flex items-center gap-1 text-sm text-muted hover:text-granat-700">
@@ -70,16 +70,16 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
         </div>
 
         {cancelled && (
-          <p className="mb-4 rounded-2xl bg-granat-50 p-3 text-sm text-granat-800 print:hidden">
+          <p className="mb-4 rounded-2xl bg-tint p-3 text-sm text-granat-800 print:hidden">
             Este pedido foi cancelado. O recibo fica só para consulta.
           </p>
         )}
 
-        <article className="relative overflow-hidden rounded-[28px] border border-line bg-white p-7 shadow-[0_30px_80px_-50px_rgba(146,23,51,0.5)] print:rounded-none print:border-0 print:shadow-none">
+        <article className="relative overflow-hidden rounded-[28px] border border-line bg-surface p-7 shadow-[0_30px_80px_-50px_rgba(146,23,51,0.5)] print:rounded-none print:border-0 print:shadow-none">
           <header className="flex items-start justify-between gap-4 border-b border-line pb-5">
             <div>
-              <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-granat-950">YR</p>
-              <p className="mt-1 font-serif text-[10px] uppercase tracking-[0.28em] text-granat-950">Make e Variedades</p>
+              <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-ink">YR</p>
+              <p className="mt-1 font-serif text-[10px] uppercase tracking-[0.28em] text-ink">Make e Variedades</p>
               <div className="mt-3 space-y-0.5 text-[11px] text-muted">
                 {(s?.address || s?.city) && <p>{[s?.address, s?.city].filter(Boolean).join(" · ")}</p>}
                 {s?.whatsapp && <p>WhatsApp {phone(s.whatsapp)}</p>}
@@ -158,7 +158,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
             </div>
           </dl>
 
-          <div className="mt-5 flex items-center justify-between gap-4 rounded-2xl bg-blush px-4 py-3 text-sm print:border print:border-line print:bg-white">
+          <div className="mt-5 flex items-center justify-between gap-4 rounded-2xl bg-blush px-4 py-3 text-sm print:border print:border-line print:bg-surface">
             <span>
               Pagamento: <strong>{PAYMENT_LABEL[o.payment_method] ?? o.payment_method}</strong>
               {paid && <span className="block text-xs text-muted">em {fmt(o.paid_at)}</span>}

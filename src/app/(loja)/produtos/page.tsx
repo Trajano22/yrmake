@@ -26,7 +26,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: SP 
 
   const chip = (active: boolean) =>
     `shrink-0 rounded-full px-4 py-2 text-sm transition ${
-      active ? "bg-granat-700 text-white" : "border border-line bg-white text-granat-950 hover:border-granat-400"
+      active ? "bg-granat-700 text-white" : "border border-line bg-surface text-ink hover:border-granat-400"
     }`;
 
   return (
@@ -34,7 +34,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: SP 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="eyebrow">Catálogo</p>
-          <h1 className="mt-2 font-serif text-4xl text-granat-950 sm:text-5xl">{title}</h1>
+          <h1 className="mt-2 font-serif text-4xl text-ink sm:text-5xl">{title}</h1>
           <p className="mt-1 text-sm text-muted">
             {products.length} {products.length === 1 ? "produto" : "produtos"}
           </p>

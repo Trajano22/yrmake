@@ -51,8 +51,8 @@ export function DeleteProductButton({
         }
         className={
           compact
-            ? "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-granat-700 hover:bg-granat-50"
-            : "btn py-2.5 text-granat-700 hover:bg-granat-50"
+            ? "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-granat-700 hover:bg-tint"
+            : "btn py-2.5 text-granat-700 hover:bg-tint"
         }
       >
         {pending ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />} Excluir
@@ -73,7 +73,7 @@ export function DeleteVariantButton({ id, label }: { id: string; label: string }
         title="Excluir este tom"
         aria-label={`Excluir ${label}`}
         onClick={() => run(`Excluir o tom "${label}"?\n\nSe ele já teve vendas, será arquivado (some da loja). Se não teve, é apagado de vez.`)}
-        className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs text-granat-700 hover:bg-granat-50"
+        className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs text-granat-700 hover:bg-tint"
       >
         {pending ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
         <span className="hidden sm:inline">Excluir</span>

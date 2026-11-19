@@ -57,7 +57,7 @@ export function SettingsForm({ initial }: { initial: S }) {
         });
       }}
     >
-      <section className="rounded-[24px] border border-line bg-white p-5">
+      <section className="rounded-[24px] border border-line bg-surface p-5">
         <h2 className="mb-4 font-serif text-2xl">Loja</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {Field({ k: "store_name", label: "Nome da loja", required: true, maxLength: 80 })}
@@ -72,7 +72,7 @@ export function SettingsForm({ initial }: { initial: S }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5">
+      <section className="rounded-[24px] border border-line bg-surface p-5">
         <h2 className="mb-4 font-serif text-2xl">Entrega e retirada</h2>
         <div className="grid gap-4 sm:grid-cols-3">
           {Field({ k: "delivery_fee", label: "Taxa de entrega (R$)", inputMode: "decimal", placeholder: "0,00" })}
@@ -83,7 +83,7 @@ export function SettingsForm({ initial }: { initial: S }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5">
+      <section className="rounded-[24px] border border-line bg-surface p-5">
         <h2 className="font-serif text-2xl">PIX</h2>
         <p className="mb-4 text-xs text-muted">
           Com isso preenchido, quem escolhe PIX vê o QR Code com o valor do pedido. O dinheiro cai direto na sua conta, sem
@@ -114,7 +114,7 @@ export function SettingsForm({ initial }: { initial: S }) {
         </div>
       </section>
 
-      <section className="rounded-[24px] border border-line bg-white p-5">
+      <section className="rounded-[24px] border border-line bg-surface p-5">
         <h2 className="mb-4 font-serif text-2xl">Pedidos</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {Field({

@@ -80,7 +80,7 @@ export function ImagesManager({
                     type="button"
                     title="Usar como capa"
                     onClick={() => run(() => makeCover(productId, img.id))}
-                    className="rounded-full bg-white/90 p-1.5 text-granat-700"
+                    className="rounded-full bg-surface/90 p-1.5 text-granat-700"
                   >
                     <Star size={14} />
                   </button>
@@ -89,7 +89,7 @@ export function ImagesManager({
                   type="button"
                   title="Excluir foto"
                   onClick={() => confirm("Excluir esta foto?") && run(() => removeImage(img.id))}
-                  className="rounded-full bg-white/90 p-1.5 text-granat-700"
+                  className="rounded-full bg-surface/90 p-1.5 text-granat-700"
                 >
                   <Trash2 size={14} />
                 </button>
@@ -102,7 +102,7 @@ export function ImagesManager({
             type="button"
             disabled={busy || pending}
             onClick={() => input.current?.click()}
-            className="flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed border-granat-200 text-xs text-granat-700 transition hover:bg-granat-50"
+            className="flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed border-granat-200 text-xs text-granat-700 transition hover:bg-tint"
           >
             {busy ? <Loader2 size={20} className="animate-spin" /> : <ImagePlus size={20} />}
             {busy ? "Enviando…" : "Adicionar"}

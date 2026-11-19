@@ -13,7 +13,7 @@ export default async function ContactPage() {
     <div className="container-x pt-12">
       <div className="text-center">
         <p className="eyebrow">Fale com a gente</p>
-        <h1 className="mt-2 font-serif text-5xl text-granat-950">
+        <h1 className="mt-2 font-serif text-5xl text-ink">
           Contato <span className="font-script text-granat-600">&</span> entrega
         </h1>
       </div>
@@ -58,9 +58,9 @@ export default async function ContactPage() {
 
 function Card({ icon: Icon, title, children }: { icon: typeof Bike; title: string; children: React.ReactNode }) {
   return (
-    <div className="h-full rounded-[28px] bg-blush p-6 transition hover:bg-granat-50">
+    <div className="h-full rounded-[28px] bg-blush p-6 transition hover:bg-tint">
       <Icon size={24} strokeWidth={1.4} className="text-granat-700" />
-      <h2 className="mt-3 font-serif text-2xl text-granat-950">{title}</h2>
+      <h2 className="mt-3 font-serif text-2xl text-ink">{title}</h2>
       <div className="mt-2 text-sm leading-relaxed">{children}</div>
     </div>
   );

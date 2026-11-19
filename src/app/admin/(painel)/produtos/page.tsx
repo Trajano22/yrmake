@@ -80,7 +80,7 @@ export default async function ProductsAdmin({ searchParams }: { searchParams: Pr
                   )
                 : null;
             return (
-              <div key={p.id} className="flex flex-col rounded-[22px] border border-line bg-white transition hover:border-granat-400">
+              <div key={p.id} className="flex flex-col rounded-[22px] border border-line bg-surface transition hover:border-granat-400">
               <Link href={`/admin/produtos/${p.id}`} className="flex gap-4 p-3">
                 <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl">
                   <ProductImage path={cover} name={p.name} />
@@ -102,8 +102,8 @@ export default async function ProductsAdmin({ searchParams }: { searchParams: Pr
                     >
                       {STATUS[p.status]}
                     </span>
-                    {p.featured && <span className="rounded-full bg-granat-50 px-2 py-0.5 text-granat-800">Destaque</span>}
-                    <span className={`rounded-full px-2 py-0.5 ${available ? "bg-blush text-granat-950" : "bg-granat-700 text-white"}`}>
+                    {p.featured && <span className="rounded-full bg-tint px-2 py-0.5 text-granat-800">Destaque</span>}
+                    <span className={`rounded-full px-2 py-0.5 ${available ? "bg-blush text-ink" : "bg-granat-700 text-white"}`}>
                       {available ? `${available} disp.` : "Esgotado"}
                       {stock !== available && ` (${stock - available} reserv.)`}
                     </span>
@@ -113,7 +113,7 @@ export default async function ProductsAdmin({ searchParams }: { searchParams: Pr
               <div className="mt-auto flex items-center justify-end gap-1 border-t border-line px-2 py-1.5">
                 <Link
                   href={`/admin/produtos/${p.id}`}
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-granat-950 hover:bg-granat-50"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-ink hover:bg-tint"
                 >
                   <Pencil size={14} /> {isManager ? "Editar" : "Ver"}
                 </Link>

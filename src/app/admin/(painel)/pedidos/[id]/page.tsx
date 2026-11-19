@@ -126,14 +126,14 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
                 )}
                 <ActionButton
                   action={setOrderStatus.bind(null, o.id, "cancelado", undefined)}
-                  className="btn py-2.5 text-granat-700 hover:bg-granat-50"
+                  className="btn py-2.5 text-granat-700 hover:bg-tint"
                   confirm={`Cancelar o pedido ${o.code}? ${o.stock_committed ? "Os produtos voltam para o estoque." : "A reserva será liberada."}`}
                 >
                   Cancelar pedido
                 </ActionButton>
               </div>
             )}
-            <ol className="mt-5 space-y-3 border-l-2 border-granat-50 pl-4 text-sm">
+            <ol className="mt-5 space-y-3 border-l-2 border-tint pl-4 text-sm">
               {history?.map((h) => (
                 <li key={h.id}>
                   <p>

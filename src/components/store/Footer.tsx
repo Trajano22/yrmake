@@ -6,18 +6,18 @@ import { whatsappLink } from "@/lib/whatsapp";
 export function Footer({ settings, categories }: { settings: PublicSettings; categories: CatalogCategory[] }) {
   const ig = settings.instagram.replace(/^@/, "");
   return (
-    <footer className="mt-24 bg-granat-950 text-granat-50">
+    <footer className="mt-24 bg-deep text-granat-50">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <p className="font-serif text-4xl font-semibold tracking-[-0.05em] text-white">YR</p>
           <p className="mt-1 font-serif text-xs uppercase tracking-[0.3em]">Make e Variedades</p>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-granat-200">
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#f2a9b7]">
             {settings.about ||
               "Maquiagens, skincare e acessórios escolhidos com carinho. Peça pelo site e receba em casa ou retire com a gente."}
           </p>
         </div>
         <div>
-          <p className="eyebrow !text-granat-200">Categorias</p>
+          <p className="eyebrow !text-[#f2a9b7]">Categorias</p>
           <ul className="mt-4 space-y-2 text-sm">
             {categories.slice(0, 6).map((c) => (
               <li key={c.id}>
@@ -29,7 +29,7 @@ export function Footer({ settings, categories }: { settings: PublicSettings; cat
           </ul>
         </div>
         <div>
-          <p className="eyebrow !text-granat-200">Fale com a gente</p>
+          <p className="eyebrow !text-[#f2a9b7]">Fale com a gente</p>
           <ul className="mt-4 space-y-3 text-sm">
             {settings.whatsapp && (
               <li>
@@ -65,9 +65,9 @@ export function Footer({ settings, categories }: { settings: PublicSettings; cat
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-[11px] text-granat-200 sm:flex-row">
+        <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-[11px] text-[#f2a9b7] sm:flex-row">
           <span>© {new Date().getFullYear()} {settings.store_name}</span>
-          <span className="font-script text-lg text-granat-200">com amor, YR</span>
+          <span className="font-script text-lg text-[#f2a9b7]">com amor, YR</span>
         </div>
       </div>
     </footer>

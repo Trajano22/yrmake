@@ -20,7 +20,7 @@ export function ProductCard({ p, priority = false }: { p: CatalogProduct; priori
             </span>
           )}
           {!p.available && (
-            <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted">
+            <span className="rounded-full bg-surface/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted">
               Esgotado
             </span>
           )}
@@ -28,12 +28,12 @@ export function ProductCard({ p, priority = false }: { p: CatalogProduct; priori
       </div>
       <div className="px-1 pt-3">
         {p.category_name && <p className="text-[10px] uppercase tracking-[0.22em] text-muted">{p.category_name}</p>}
-        <h3 className="mt-1 text-[13px] font-medium uppercase leading-snug tracking-[0.08em] text-granat-950 transition group-hover:text-granat-700">
+        <h3 className="mt-1 text-[13px] font-medium uppercase leading-snug tracking-[0.08em] text-ink transition group-hover:text-granat-700">
           {p.name}
         </h3>
         <div className="mt-1.5 flex items-baseline gap-2">
           {p.variant_count > 1 && <span className="text-xs text-muted">a partir de</span>}
-          <span className="text-[15px] text-granat-950">{brl(p.min_price_cents)}</span>
+          <span className="text-[15px] text-ink">{brl(p.min_price_cents)}</span>
           {p.on_sale && p.min_regular_cents > p.min_price_cents && (
             <span className="text-xs text-muted line-through">{brl(p.min_regular_cents)}</span>
           )}

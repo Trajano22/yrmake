@@ -61,7 +61,7 @@ export function StockRow({ v, canEdit = false }: { v: V; canEdit?: boolean }) {
                 href={`/admin/produtos/${v.products.id}`}
                 title="Editar produto e tom"
                 aria-label={`Editar ${v.products.name}`}
-                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs text-granat-950 hover:bg-granat-50"
+                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs text-ink hover:bg-tint"
               >
                 <Pencil size={14} />
                 <span className="hidden sm:inline">Editar</span>

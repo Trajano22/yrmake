@@ -14,10 +14,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
     if (staff) redirect("/admin");
   }
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-[linear-gradient(180deg,#fce3e8_0%,#ffffff_70%)] px-4">
-      <div className="w-full max-w-sm rounded-[32px] bg-white p-8 shadow-[0_30px_80px_-40px_rgba(146,23,51,0.45)]">
+    <div className="flex min-h-dvh items-center justify-center bg-[linear-gradient(180deg,var(--color-hero-b)_0%,var(--color-page)_70%)] px-4">
+      <div className="w-full max-w-sm rounded-[32px] bg-surface p-8 shadow-[0_30px_80px_-40px_rgba(146,23,51,0.45)]">
         <div className="text-center">
-          <p className="font-serif text-5xl font-semibold tracking-[-0.06em] text-granat-950">YR</p>
+          <p className="font-serif text-5xl font-semibold tracking-[-0.06em] text-ink">YR</p>
           <p className="font-script text-2xl text-granat-600">painel</p>
         </div>
         {!isConfigured && (
@@ -26,7 +26,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           </p>
         )}
         {e === "perfil" && (
-          <p className="mt-6 rounded-2xl bg-granat-50 p-3 text-xs text-granat-800">
+          <p className="mt-6 rounded-2xl bg-tint p-3 text-xs text-granat-800">
             Esse usuário não tem acesso ao painel.
           </p>
         )}

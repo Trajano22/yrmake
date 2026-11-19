@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import type { CatalogCategory } from "@/lib/types";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useCart } from "./CartProvider";
 import { Logo } from "./Logo";
 
@@ -39,26 +40,26 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="border-b border-line bg-white/90 backdrop-blur-md">
+      <div className="border-b border-line bg-surface/90 backdrop-blur-md">
         <div className="container-x grid h-20 grid-cols-[1fr_auto_1fr] items-center">
           <div className="flex items-center gap-1">
             <button
               type="button"
               aria-label="Abrir menu"
               onClick={() => setOpen(true)}
-              className="-ml-2 rounded-full p-2 text-granat-950 hover:bg-granat-50 lg:hidden"
+              className="-ml-2 rounded-full p-2 text-ink hover:bg-tint lg:hidden"
             >
               <Menu size={22} strokeWidth={1.5} />
             </button>
             <nav className="hidden items-center gap-6 lg:flex">
-              <Link href="/produtos" className="text-[13px] tracking-wide text-granat-950 hover:text-granat-700">
+              <Link href="/produtos" className="text-[13px] tracking-wide text-ink hover:text-granat-700">
                 Todos
               </Link>
               {main.slice(0, 4).map((c) => (
                 <Link
                   key={c.id}
                   href={`/produtos?categoria=${c.slug}`}
-                  className="text-[13px] tracking-wide text-granat-950 hover:text-granat-700"
+                  className="text-[13px] tracking-wide text-ink hover:text-granat-700"
                 >
                   {c.name}
                 </Link>
@@ -67,18 +68,19 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
           </div>
           <Logo size="sm" />
           <div className="flex items-center justify-end gap-1">
+            <ThemeToggle />
             <button
               type="button"
               aria-label="Buscar"
               onClick={() => setSearching((s) => !s)}
-              className="rounded-full p-2 text-granat-950 hover:bg-granat-50"
+              className="rounded-full p-2 text-ink hover:bg-tint"
             >
               <Search size={20} strokeWidth={1.5} />
             </button>
             <Link
               href="/carrinho"
               aria-label={`Carrinho, ${count} itens`}
-              className={`relative rounded-full p-2 text-granat-950 transition hover:bg-granat-50 ${bump ? "scale-125" : ""}`}
+              className={`relative rounded-full p-2 text-ink transition hover:bg-tint ${bump ? "scale-125" : ""}`}
             >
               <ShoppingBag size={21} strokeWidth={1.5} />
               {ready && count > 0 && (
@@ -108,11 +110,11 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
 
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal>
-          <button aria-label="Fechar menu" className="absolute inset-0 bg-granat-950/40" onClick={() => setOpen(false)} />
-          <div className="absolute inset-y-0 left-0 flex w-[82%] max-w-sm flex-col bg-white p-6 shadow-2xl animate-fade-up">
+          <button aria-label="Fechar menu" className="absolute inset-0 bg-deep/40" onClick={() => setOpen(false)} />
+          <div className="absolute inset-y-0 left-0 flex w-[82%] max-w-sm flex-col bg-surface p-6 shadow-2xl animate-fade-up">
             <div className="flex items-center justify-between">
               <Logo size="sm" />
-              <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full p-2 hover:bg-granat-50">
+              <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full p-2 hover:bg-tint">
                 <X size={22} strokeWidth={1.5} />
               </button>
             </div>
@@ -124,7 +126,7 @@ export function Header({ categories }: { categories: CatalogCategory[] }) {
                 <Link
                   key={c.id}
                   href={`/produtos?categoria=${c.slug}`}
-                  className="border-b border-line py-3 font-serif text-xl text-granat-950"
+                  className="border-b border-line py-3 font-serif text-xl text-ink"
                 >
                   {c.name}
                 </Link>

@@ -9,7 +9,7 @@ export default async function CartPage() {
   return (
     <div className="container-x pt-10">
       <p className="eyebrow">Sua sacola</p>
-      <h1 className="mt-2 font-serif text-4xl text-granat-950 sm:text-5xl">Carrinho</h1>
+      <h1 className="mt-2 font-serif text-4xl text-ink sm:text-5xl">Carrinho</h1>
       <CartView freeDeliveryMin={s.free_delivery_min_cents} minOrder={s.min_order_cents} />
     </div>
   );

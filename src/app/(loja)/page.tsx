@@ -15,16 +15,16 @@ export default async function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fce3e8_0%,#fdf3f5_50%,#ffffff_92%)]">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,var(--color-hero-a)_0%,var(--color-hero-b)_45%,var(--color-page)_92%)]">
         <Sparkle className="left-[8%] top-[18%] h-6 w-6" />
         <Sparkle className="right-[10%] top-[12%] h-8 w-8" />
         <Sparkle className="right-[22%] bottom-[22%] h-4 w-4" />
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-granat-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-granat-50 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-tint blur-3xl" />
 
         <div className="container-x relative flex flex-col items-center py-16 text-center sm:py-24">
           <p className="eyebrow animate-fade-up">Maquiagem · Skincare · Acessórios</p>
-          <h1 className="mt-5 animate-fade-up font-serif text-[44px] leading-[1.05] font-normal tracking-[-0.01em] text-granat-950 [animation-delay:80ms] sm:text-7xl">
+          <h1 className="mt-5 animate-fade-up font-serif text-[44px] leading-[1.05] font-normal tracking-[-0.01em] text-ink [animation-delay:80ms] sm:text-7xl">
             Sua beleza,
             <span className="block font-script text-granat-600">do seu jeito</span>
           </h1>
@@ -61,7 +61,7 @@ export default async function Home() {
               <Link
                 key={c.id}
                 href={`/produtos?categoria=${c.slug}`}
-                className="shrink-0 snap-start rounded-full border border-line bg-white px-5 py-2.5 text-sm text-granat-950 transition hover:border-granat-400 hover:bg-granat-50"
+                className="shrink-0 snap-start rounded-full border border-line bg-surface px-5 py-2.5 text-sm text-ink transition hover:border-granat-400 hover:bg-tint"
               >
                 {c.name}
               </Link>
@@ -110,13 +110,13 @@ export default async function Home() {
               { icon: MapPin, t: "Receba ou retire", d: "Entregamos na cidade ou você retira com a gente." },
             ].map(({ icon: Icon, t, d }, i) => (
               <div key={t} className="flex flex-col items-center text-center">
-                <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-granat-700 shadow-[0_10px_30px_-15px_rgba(146,23,51,0.5)]">
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-surface text-granat-700 shadow-[0_10px_30px_-15px_rgba(146,23,51,0.5)]">
                   <Icon size={24} strokeWidth={1.4} />
                   <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-granat-700 text-[11px] text-white">
                     {i + 1}
                   </span>
                 </div>
-                <h3 className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-granat-950">{t}</h3>
+                <h3 className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-ink">{t}</h3>
                 <p className="mt-1 max-w-[16rem] text-sm text-muted">{d}</p>
               </div>
             ))}

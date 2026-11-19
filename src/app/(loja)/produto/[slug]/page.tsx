@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: { params: Params }) {
 
         <div className="lg:pt-4">
           {product.category_name && <p className="eyebrow">{product.category_name}</p>}
-          <h1 className="mt-2 font-serif text-4xl leading-tight text-granat-950 sm:text-5xl">{product.name}</h1>
+          <h1 className="mt-2 font-serif text-4xl leading-tight text-ink sm:text-5xl">{product.name}</h1>
 
           <ProductBuy
             product={{ slug: product.slug, name: product.name, cover: product.cover_path }}
@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           {product.description && (
             <div className="mt-10 border-t border-line pt-6">
               <h2 className="eyebrow">Sobre o produto</h2>
-              <p className="mt-3 whitespace-pre-line text-[15px] leading-relaxed text-granat-950/80">
+              <p className="mt-3 whitespace-pre-line text-[15px] leading-relaxed text-ink/80">
                 {product.description}
               </p>
             </div>

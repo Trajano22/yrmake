@@ -51,7 +51,7 @@ export function ProductBuy({
         <span className="font-serif text-4xl text-granat-700">{brl(v.final_price_cents)}</span>
         {v.promo_price_cents && <span className="text-muted line-through">{brl(v.price_cents)}</span>}
         {v.promo_price_cents && (
-          <span className="rounded-full bg-granat-50 px-2.5 py-0.5 text-xs font-medium text-granat-700">
+          <span className="rounded-full bg-tint px-2.5 py-0.5 text-xs font-medium text-granat-700">
             -{Math.round(((v.price_cents - v.promo_price_cents) / v.price_cents) * 100)}%
           </span>
         )}
@@ -60,7 +60,7 @@ export function ProductBuy({
       {!single && (
         <div className="mt-7">
           <p className="label">
-            {hasSwatches ? "Tom" : "Opção"}: <span className="normal-case tracking-normal text-granat-950">{v.name}</span>
+            {hasSwatches ? "Tom" : "Opção"}: <span className="normal-case tracking-normal text-ink">{v.name}</span>
           </p>
           <div className="mt-2 flex flex-wrap gap-2.5">
             {variants.map((x) => {
@@ -82,7 +82,7 @@ export function ProductBuy({
                   } ${out ? "opacity-40" : ""}`}
                   style={{ background: x.color_hex ?? "#fce3e8" }}
                 >
-                  {out && <span className="absolute left-1/2 top-1/2 h-[2px] w-12 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white" />}
+                  {out && <span className="absolute left-1/2 top-1/2 h-[2px] w-12 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-surface" />}
                 </button>
               ) : (
                 <button
@@ -121,7 +121,7 @@ export function ProductBuy({
             type="button"
             aria-label="Diminuir"
             onClick={() => setQty((q) => Math.max(1, q - 1))}
-            className="rounded-full p-2 hover:bg-granat-50 disabled:opacity-30"
+            className="rounded-full p-2 hover:bg-tint disabled:opacity-30"
             disabled={qty <= 1}
           >
             <Minus size={16} />
@@ -133,7 +133,7 @@ export function ProductBuy({
             type="button"
             aria-label="Aumentar"
             onClick={() => setQty((q) => Math.min(max || 1, q + 1))}
-            className="rounded-full p-2 hover:bg-granat-50 disabled:opacity-30"
+            className="rounded-full p-2 hover:bg-tint disabled:opacity-30"
             disabled={qty >= max}
           >
             <Plus size={16} />

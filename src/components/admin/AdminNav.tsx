@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Boxes, ExternalLink, LayoutDashboard, LogOut, Menu, Package, Settings, ShoppingBag, Tags, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { signOut } from "@/app/admin/actions/auth";
 
 const ROLE = { owner: "Proprietária", manager: "Gerente", staff: "Funcionária" } as const;
@@ -35,7 +36,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
             key={href}
             href={href}
             className={`flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm transition ${
-              active ? "bg-granat-700 text-white" : "text-granat-950 hover:bg-granat-50"
+              active ? "bg-granat-700 text-white" : "text-ink hover:bg-tint"
             }`}
           >
             <Icon size={18} strokeWidth={1.6} /> {label}
@@ -45,7 +46,7 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
       <a
         href="/"
         target="_blank"
-        className="mt-2 flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm text-muted hover:bg-granat-50"
+        className="mt-2 flex items-center gap-3 rounded-2xl px-4 py-2.5 text-sm text-muted hover:bg-tint"
       >
         <ExternalLink size={18} strokeWidth={1.6} /> Ver loja
       </a>
@@ -54,8 +55,11 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
 
   const footer = (
     <div className="border-t border-line pt-4">
-      <p className="truncate text-sm font-medium text-granat-950">{name}</p>
-      <p className="text-xs text-muted">{ROLE[role]}</p>
+      <p className="truncate text-sm font-medium text-ink">{name}</p>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-xs text-muted">{ROLE[role]}</p>
+        <ThemeToggle className="hidden lg:inline-flex" />
+      </div>
       <form action={signOut}>
         <button className="mt-3 inline-flex items-center gap-2 text-sm text-granat-700 hover:underline">
           <LogOut size={15} /> Sair
@@ -66,22 +70,22 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
 
   return (
     <>
-      <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-white px-4 lg:hidden">
-        <button aria-label="Menu" onClick={() => setOpen(true)} className="-ml-2 rounded-full p-2 hover:bg-granat-50">
+      <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-surface px-4 lg:hidden">
+        <button aria-label="Menu" onClick={() => setOpen(true)} className="-ml-2 rounded-full p-2 hover:bg-tint">
           <Menu size={22} />
         </button>
         <span className="font-serif text-2xl font-semibold tracking-[-0.05em]">
           YR <span className="font-script text-lg font-normal text-granat-600">painel</span>
         </span>
-        <span className="w-8" />
+        <ThemeToggle />
       </div>
       {open && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <button aria-label="Fechar" className="absolute inset-0 bg-granat-950/40" onClick={() => setOpen(false)} />
-          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col gap-6 bg-white p-5">
+          <button aria-label="Fechar" className="absolute inset-0 bg-deep/40" onClick={() => setOpen(false)} />
+          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col gap-6 bg-surface p-5">
             <div className="flex items-center justify-between">
               <span className="font-serif text-3xl font-semibold tracking-[-0.05em]">YR</span>
-              <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full p-2 hover:bg-granat-50">
+              <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full p-2 hover:bg-tint">
                 <X size={20} />
               </button>
             </div>
@@ -90,9 +94,9 @@ export function AdminNav({ name, role }: { name: string; role: keyof typeof ROLE
           </aside>
         </div>
       )}
-      <aside className="sticky top-0 hidden h-dvh flex-col gap-8 border-r border-line bg-white p-5 lg:flex">
+      <aside className="sticky top-0 hidden h-dvh flex-col gap-8 border-r border-line bg-surface p-5 lg:flex">
         <div className="px-2 pt-2">
-          <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-granat-950">YR</p>
+          <p className="font-serif text-4xl font-semibold leading-none tracking-[-0.06em] text-ink">YR</p>
           <p className="font-script text-xl text-granat-600">painel</p>
         </div>
         {nav}

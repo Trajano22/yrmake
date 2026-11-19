@@ -60,7 +60,7 @@ export default async function OrdersPage({
             key={k}
             href={qs(k)}
             className={`rounded-full px-4 py-1.5 text-sm ${
-              k === group ? "bg-granat-950 text-white" : "border border-line bg-white hover:border-granat-400"
+              k === group ? "bg-deep text-white" : "border border-line bg-surface hover:border-granat-400"
             }`}
           >
             {g.label}
@@ -85,7 +85,7 @@ export default async function OrdersPage({
       </form>
 
       {orders?.length ? (
-        <div className="overflow-hidden rounded-[24px] border border-line bg-white">
+        <div className="overflow-hidden rounded-[24px] border border-line bg-surface">
           <ul className="divide-y divide-line">
             {orders.map((o) => (
               <li key={o.id}>

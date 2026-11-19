@@ -5,7 +5,7 @@ export function PageHeader({ title, subtitle, action }: { title: string; subtitl
   return (
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
       <div>
-        <h1 className="font-serif text-4xl text-granat-950">{title}</h1>
+        <h1 className="font-serif text-4xl text-ink">{title}</h1>
         {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
       </div>
       {action}
@@ -14,7 +14,7 @@ export function PageHeader({ title, subtitle, action }: { title: string; subtitl
 }
 
 export function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-[24px] border border-line bg-white p-5 ${className}`}>{children}</div>;
+  return <div className={`rounded-[24px] border border-line bg-surface p-5 ${className}`}>{children}</div>;
 }
 
 const STATUS_STYLE: Record<OrderStatus, string> = {
@@ -24,7 +24,7 @@ const STATUS_STYLE: Record<OrderStatus, string> = {
   em_preparacao: "bg-sky-50 text-sky-800 ring-sky-200",
   saiu_para_entrega: "bg-indigo-50 text-indigo-800 ring-indigo-200",
   pronto_para_retirada: "bg-violet-50 text-violet-800 ring-violet-200",
-  concluido: "bg-granat-50 text-granat-800 ring-granat-200",
+  concluido: "bg-tint text-granat-800 ring-granat-200",
   cancelado: "bg-zinc-100 text-zinc-600 ring-zinc-200",
 };
 
@@ -37,7 +37,7 @@ export function StatusBadge({ status }: { status: OrderStatus }) {
 }
 
 export function Empty({ children }: { children: React.ReactNode }) {
-  return <div className="rounded-[24px] border border-dashed border-granat-200 bg-white p-10 text-center text-sm text-muted">{children}</div>;
+  return <div className="rounded-[24px] border border-dashed border-granat-200 bg-surface p-10 text-center text-sm text-muted">{children}</div>;
 }
 
 export function formatDate(iso: string | null, withTime = true) {

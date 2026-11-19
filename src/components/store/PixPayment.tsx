@@ -43,22 +43,22 @@ export function PixPayment({
   return (
     <div className="mx-auto max-w-lg py-4 text-center animate-fade-up">
       <p className="eyebrow">Pedido {order.code}</p>
-      <h1 className="mt-2 font-serif text-4xl text-granat-950">
+      <h1 className="mt-2 font-serif text-4xl text-ink">
         Pague com <span className="font-script text-4xl text-granat-600">PIX</span>
       </h1>
       <p className="mt-3 font-serif text-4xl text-granat-700">{brl(order.total_cents)}</p>
 
       <div className="mt-6 rounded-[28px] bg-blush p-5">
-        <p className="text-left text-sm font-medium text-granat-950">
+        <p className="text-left text-sm font-medium text-ink">
           <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-granat-700 text-xs text-white">1</span>
           Pague pelo app do seu banco
         </p>
 
-        <div className="mx-auto mt-4 hidden w-56 overflow-hidden rounded-2xl bg-white p-2 sm:block">
+        <div className="mx-auto mt-4 hidden w-56 overflow-hidden rounded-2xl bg-[#fff] p-2 sm:block">
           {svg ? (
             <div aria-label="QR Code do PIX" role="img" dangerouslySetInnerHTML={{ __html: svg }} />
           ) : (
-            <div className="aspect-square animate-pulse rounded-xl bg-granat-50" />
+            <div className="aspect-square animate-pulse rounded-xl bg-tint" />
           )}
         </div>
         <p className="mt-3 hidden text-xs text-muted sm:block">Escaneie o QR Code ou use o código abaixo</p>
@@ -69,7 +69,7 @@ export function PixPayment({
           value={pixCode}
           rows={3}
           onFocus={(e) => e.currentTarget.select()}
-          className="mt-4 w-full resize-none rounded-2xl border border-line bg-white p-3 font-mono text-[11px] leading-snug text-granat-950"
+          className="mt-4 w-full resize-none rounded-2xl border border-line bg-surface p-3 font-mono text-[11px] leading-snug text-ink"
           aria-label="Código PIX copia e cola"
         />
         <button type="button" onClick={copy} className="btn-primary mt-3 h-12 w-full">
@@ -84,13 +84,13 @@ export function PixPayment({
         {svg && (
           <details className="mt-3 text-xs text-muted sm:hidden">
             <summary className="cursor-pointer">Mostrar QR Code</summary>
-            <div className="mx-auto mt-3 w-52 rounded-2xl bg-white p-2" dangerouslySetInnerHTML={{ __html: svg }} />
+            <div className="mx-auto mt-3 w-52 rounded-2xl bg-[#fff] p-2" dangerouslySetInnerHTML={{ __html: svg }} />
           </details>
         )}
       </div>
 
       <div className="mt-4 rounded-[28px] border border-line p-5">
-        <p className="text-left text-sm font-medium text-granat-950">
+        <p className="text-left text-sm font-medium text-ink">
           <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-granat-700 text-xs text-white">2</span>
           Envie o comprovante
         </p>

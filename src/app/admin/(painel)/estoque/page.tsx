@@ -73,7 +73,7 @@ export default async function StockPage({ searchParams }: { searchParams: Promis
             key={f}
             href={`/admin/estoque?filtro=${f}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
             className={`rounded-full px-4 py-1.5 text-sm ${
-              f === filtro ? "bg-granat-950 text-white" : "border border-line bg-white hover:border-granat-400"
+              f === filtro ? "bg-deep text-white" : "border border-line bg-surface hover:border-granat-400"
             }`}
           >
             {FILTERS[f]}
@@ -91,7 +91,7 @@ export default async function StockPage({ searchParams }: { searchParams: Promis
 
       <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
         {rows.length ? (
-          <div className="overflow-hidden rounded-[24px] border border-line bg-white">
+          <div className="overflow-hidden rounded-[24px] border border-line bg-surface">
             <div className="hidden grid-cols-[1fr_70px_70px_70px_auto] gap-3 border-b border-line px-4 py-2 text-[11px] uppercase tracking-wider text-muted sm:grid">
               <span>Produto</span>
               <span className="text-right">Estoque</span>

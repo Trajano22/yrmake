@@ -38,7 +38,7 @@ export function CategoriesEditor({ categories }: { categories: Cat[] }) {
         </button>
       </form>
       {error && <p className="mb-3 text-sm text-granat-700">{error}</p>}
-      <ul className="divide-y divide-line overflow-hidden rounded-[24px] border border-line bg-white">
+      <ul className="divide-y divide-line overflow-hidden rounded-[24px] border border-line bg-surface">
         {categories.map((c, i) => (
           <Row key={c.id} c={c} first={i === 0} last={i === categories.length - 1} run={run} pending={pending} />
         ))}
@@ -77,14 +77,14 @@ function Row({
         disabled={pending}
         title={c.active ? "Esconder da loja" : "Mostrar na loja"}
         onClick={() => run(() => saveCategory(c.id, c.name, !c.active))}
-        className="rounded-full p-2 text-muted hover:bg-granat-50"
+        className="rounded-full p-2 text-muted hover:bg-tint"
       >
         {c.active ? <Eye size={16} /> : <EyeOff size={16} />}
       </button>
-      <button type="button" disabled={pending || first} onClick={() => run(() => moveCategory(c.id, -1))} className="rounded-full p-2 text-muted hover:bg-granat-50 disabled:opacity-30" aria-label="Subir">
+      <button type="button" disabled={pending || first} onClick={() => run(() => moveCategory(c.id, -1))} className="rounded-full p-2 text-muted hover:bg-tint disabled:opacity-30" aria-label="Subir">
         <ArrowUp size={16} />
       </button>
-      <button type="button" disabled={pending || last} onClick={() => run(() => moveCategory(c.id, 1))} className="rounded-full p-2 text-muted hover:bg-granat-50 disabled:opacity-30" aria-label="Descer">
+      <button type="button" disabled={pending || last} onClick={() => run(() => moveCategory(c.id, 1))} className="rounded-full p-2 text-muted hover:bg-tint disabled:opacity-30" aria-label="Descer">
         <ArrowDown size={16} />
       </button>
     </li>

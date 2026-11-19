@@ -113,25 +113,25 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
 
   const option = (active: boolean) =>
     `flex flex-1 items-center gap-3 rounded-2xl border p-4 text-left transition ${
-      active ? "border-granat-700 bg-granat-50" : "border-line hover:border-granat-200"
+      active ? "border-granat-700 bg-tint" : "border-line hover:border-granat-200"
     }`;
 
   return (
     <form onSubmit={submit} className="grid gap-10 lg:grid-cols-[1fr_380px]">
       <div>
         <p className="eyebrow">Quase lá</p>
-        <h1 className="mt-2 font-serif text-4xl text-granat-950 sm:text-5xl">Finalizar pedido</h1>
+        <h1 className="mt-2 font-serif text-4xl text-ink sm:text-5xl">Finalizar pedido</h1>
         <p className="mt-2 text-sm text-muted">
           Você confirma tudo pelo WhatsApp com a gente. Nada é cobrado agora.
         </p>
 
         {!settings.acceptingOrders && (
-          <p className="mt-6 rounded-2xl bg-granat-50 px-4 py-3 text-sm text-granat-800">
+          <p className="mt-6 rounded-2xl bg-tint px-4 py-3 text-sm text-granat-800">
             No momento não estamos recebendo pedidos pelo site. Chame a gente no WhatsApp!
           </p>
         )}
         {warnings.length > 0 && (
-          <div className="mt-6 rounded-2xl border border-granat-200 bg-granat-50 px-4 py-3 text-sm text-granat-800">
+          <div className="mt-6 rounded-2xl border border-granat-200 bg-tint px-4 py-3 text-sm text-granat-800">
             {warnings.map((w) => (
               <p key={w}>{w}</p>
             ))}
@@ -139,7 +139,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
         )}
 
         <fieldset className="mt-8">
-          <legend className="font-serif text-2xl text-granat-950">Seus dados</legend>
+          <legend className="font-serif text-2xl text-ink">Seus dados</legend>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
               <label className="label" htmlFor="name">Nome</label>
@@ -162,7 +162,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
         </fieldset>
 
         <fieldset className="mt-8">
-          <legend className="font-serif text-2xl text-granat-950">Como você quer receber?</legend>
+          <legend className="font-serif text-2xl text-ink">Como você quer receber?</legend>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <button type="button" className={option(method === "entrega")} onClick={() => setMethod("entrega")} aria-pressed={method === "entrega"}>
               <Bike size={22} className="text-granat-700" strokeWidth={1.5} />
@@ -212,7 +212,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
         </fieldset>
 
         <fieldset className="mt-8">
-          <legend className="font-serif text-2xl text-granat-950">Pagamento</legend>
+          <legend className="font-serif text-2xl text-ink">Pagamento</legend>
           <p className="mt-1 text-xs text-muted">
             {payment === "pix" && pixReady
               ? "Na próxima tela aparece o QR Code do PIX com o valor certinho."
@@ -247,7 +247,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
       </div>
 
       <aside className="h-fit rounded-[28px] bg-blush p-6 lg:sticky lg:top-32">
-        <h2 className="font-serif text-2xl text-granat-950">Seu pedido</h2>
+        <h2 className="font-serif text-2xl text-ink">Seu pedido</h2>
         <ul className="mt-4 space-y-3 text-sm">
           {items.map((i) => (
             <li key={i.variantId} className="flex justify-between gap-3">
@@ -274,7 +274,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
           </div>
         </dl>
         {error && (
-          <p role="alert" className="mt-4 rounded-2xl bg-white px-4 py-3 text-sm text-granat-700">
+          <p role="alert" className="mt-4 rounded-2xl bg-surface px-4 py-3 text-sm text-granat-700">
             {error}
           </p>
         )}
@@ -294,11 +294,11 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
 function Success({ order, link, hasWhatsapp }: { order: OrderSummary; link: string; hasWhatsapp: boolean }) {
   return (
     <div className="mx-auto max-w-lg py-6 text-center animate-fade-up">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-granat-50 text-granat-700">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-tint text-granat-700">
         <Check size={30} />
       </div>
       <p className="mt-6 eyebrow">Pedido {order.code}</p>
-      <h1 className="mt-2 font-serif text-4xl text-granat-950">
+      <h1 className="mt-2 font-serif text-4xl text-ink">
         Falta <span className="font-script text-4xl text-granat-600">só um toque</span>
       </h1>
       <p className="mt-4 text-[15px] text-muted">
@@ -309,7 +309,7 @@ function Success({ order, link, hasWhatsapp }: { order: OrderSummary; link: stri
           <MessageCircle size={20} /> Abrir WhatsApp e enviar
         </a>
       ) : (
-        <p className="mt-8 rounded-2xl bg-granat-50 p-4 text-sm text-granat-800">
+        <p className="mt-8 rounded-2xl bg-tint p-4 text-sm text-granat-800">
           Guarde o código <strong>{order.code}</strong> — entraremos em contato.
         </p>
       )}

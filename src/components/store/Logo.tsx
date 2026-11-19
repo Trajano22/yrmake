@@ -5,7 +5,7 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const sub = size === "lg" ? "text-[11px]" : "text-[8.5px]";
   return (
     <Link href="/" aria-label="YR Make e Variedades — início" className="group inline-flex flex-col items-center leading-none">
-      <span className={`relative font-serif font-semibold tracking-[-0.06em] text-granat-950 ${yr}`}>
+      <span className={`relative font-serif font-semibold tracking-[-0.06em] text-ink ${yr}`}>
         YR
         <svg
           aria-hidden
@@ -15,7 +15,7 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
           <path d="M2 22 C 30 30, 60 4, 118 10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       </span>
-      <span className={`mt-1.5 font-serif uppercase tracking-[0.28em] text-granat-950 ${sub}`}>Make e Variedades</span>
+      <span className={`mt-1.5 font-serif uppercase tracking-[0.28em] text-ink ${sub}`}>Make e Variedades</span>
     </Link>
   );
 }

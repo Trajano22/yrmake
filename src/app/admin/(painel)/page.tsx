@@ -88,7 +88,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
     <>
       <PageHeader title={`Olá, ${staff.full_name.split(" ")[0] || "bem-vinda"}`} subtitle="Como está a loja" />
       {sp.e === "permissao" && (
-        <p className="mb-4 rounded-2xl bg-granat-50 px-4 py-3 text-sm text-granat-800">Você não tem permissão para aquela área.</p>
+        <p className="mb-4 rounded-2xl bg-tint px-4 py-3 text-sm text-granat-800">Você não tem permissão para aquela área.</p>
       )}
 
       <div className="mb-5 flex flex-wrap gap-2">
@@ -97,7 +97,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             key={p}
             href={`/admin?p=${p}`}
             className={`rounded-full px-4 py-1.5 text-sm ${
-              p === period ? "bg-granat-950 text-white" : "border border-line bg-white hover:border-granat-400"
+              p === period ? "bg-deep text-white" : "border border-line bg-surface hover:border-granat-400"
             }`}
           >
             {PERIODS[p]}
@@ -124,7 +124,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
       </div>
       {isManager && s.stock_value_cents != null && (
         <p className="mt-3 text-sm text-muted">
-          Valor investido em estoque (pelo custo): <strong className="text-granat-950">{brl(s.stock_value_cents)}</strong>
+          Valor investido em estoque (pelo custo): <strong className="text-ink">{brl(s.stock_value_cents)}</strong>
         </p>
       )}
 
@@ -206,7 +206,7 @@ function Stat({
   const body = (
     <div
       className={`h-full rounded-[22px] p-4 transition ${
-        strong ? "bg-granat-700 text-white" : "border border-line bg-white"
+        strong ? "bg-granat-700 text-white" : "border border-line bg-surface"
       } ${href ? "hover:border-granat-400" : ""}`}
     >
       <p className={`text-xs ${strong ? "text-granat-50" : "text-muted"}`}>{label}</p>

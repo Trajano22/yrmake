@@ -64,7 +64,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
     <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_380px]">
       <div>
         {warnings.length > 0 && (
-          <div className="mb-5 rounded-2xl border border-granat-200 bg-granat-50 px-4 py-3 text-sm text-granat-800">
+          <div className="mb-5 rounded-2xl border border-granat-200 bg-tint px-4 py-3 text-sm text-granat-800">
             {warnings.map((w) => (
               <p key={w}>{w}</p>
             ))}
@@ -79,7 +79,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
               <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <Link href={`/produto/${i.slug}`} className="font-serif text-xl leading-tight text-granat-950 hover:text-granat-700">
+                    <Link href={`/produto/${i.slug}`} className="font-serif text-xl leading-tight text-ink hover:text-granat-700">
                       {i.productName}
                     </Link>
                     {!/^únic/i.test(i.variantName) && (
@@ -93,7 +93,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
                     type="button"
                     onClick={() => remove(i.variantId)}
                     aria-label={`Remover ${i.productName}`}
-                    className="rounded-full p-2 text-muted hover:bg-granat-50 hover:text-granat-700"
+                    className="rounded-full p-2 text-muted hover:bg-tint hover:text-granat-700"
                   >
                     <Trash2 size={16} />
                   </button>
@@ -105,7 +105,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
                       aria-label="Diminuir"
                       onClick={() => setQty(i.variantId, i.quantity - 1)}
                       disabled={i.quantity <= 1}
-                      className="rounded-full p-1.5 hover:bg-granat-50 disabled:opacity-30"
+                      className="rounded-full p-1.5 hover:bg-tint disabled:opacity-30"
                     >
                       <Minus size={14} />
                     </button>
@@ -115,12 +115,12 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
                       aria-label="Aumentar"
                       onClick={() => setQty(i.variantId, i.quantity + 1)}
                       disabled={i.quantity >= Math.min(i.max, 20)}
-                      className="rounded-full p-1.5 hover:bg-granat-50 disabled:opacity-30"
+                      className="rounded-full p-1.5 hover:bg-tint disabled:opacity-30"
                     >
                       <Plus size={14} />
                     </button>
                   </div>
-                  <span className="font-medium text-granat-950">{brl(i.priceCents * i.quantity)}</span>
+                  <span className="font-medium text-ink">{brl(i.priceCents * i.quantity)}</span>
                 </div>
               </div>
             </li>
@@ -132,7 +132,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
       </div>
 
       <aside className="h-fit rounded-[28px] bg-blush p-6 lg:sticky lg:top-32">
-        <h2 className="font-serif text-2xl text-granat-950">Resumo</h2>
+        <h2 className="font-serif text-2xl text-ink">Resumo</h2>
         <dl className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">
             <dt className="text-muted">Subtotal</dt>
@@ -144,12 +144,12 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
           </div>
         </dl>
         {freeDeliveryMin && missingFree > 0 && (
-          <p className="mt-4 rounded-2xl bg-white px-4 py-3 text-xs text-granat-800">
+          <p className="mt-4 rounded-2xl bg-surface px-4 py-3 text-xs text-granat-800">
             Faltam <strong>{brl(missingFree)}</strong> para a entrega grátis 💕
           </p>
         )}
         {belowMin && (
-          <p className="mt-4 rounded-2xl bg-white px-4 py-3 text-xs text-granat-800">
+          <p className="mt-4 rounded-2xl bg-surface px-4 py-3 text-xs text-granat-800">
             O pedido mínimo é {brl(minOrder)}.
           </p>
         )}
