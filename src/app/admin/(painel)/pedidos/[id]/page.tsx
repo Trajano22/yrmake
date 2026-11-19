@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronLeft, MessageCircle } from "lucide-react";
+import { ChevronLeft, MessageCircle, ReceiptText } from "lucide-react";
 import { ActionButton } from "@/components/admin/ActionButton";
 import { NotesForm } from "@/components/admin/NotesForm";
 import { Card, PageHeader, StatusBadge, formatDate } from "@/components/admin/ui";
@@ -64,7 +64,14 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
       <PageHeader
         title={`Pedido ${o.code}`}
         subtitle={`Feito em ${formatDate(o.created_at)} pelo site`}
-        action={<StatusBadge status={status} />}
+        action={
+          <div className="flex items-center gap-2">
+            <StatusBadge status={status} />
+            <Link href={`/admin/recibo/${o.id}`} className="btn-outline py-2">
+              <ReceiptText size={15} /> Recibo
+            </Link>
+          </div>
+        }
       />
 
       <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
