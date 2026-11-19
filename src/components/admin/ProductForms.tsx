@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Loader2, Plus, Trash2 } from "lucide-react";
+import { Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import {
   createProduct,
   removeVariant,
@@ -322,6 +322,11 @@ function VariantCard({ productId, row, canEdit }: { productId: string; row: Vari
           {available} disp.
           {row.reserved > 0 && <span className="block text-[11px] text-muted">{row.reserved} reservado</span>}
         </span>
+        {canEdit && (
+          <span className="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs text-granat-950">
+            <Pencil size={12} /> {open ? "Fechar" : "Editar"}
+          </span>
+        )}
       </button>
       {open && canEdit && (
         <form
@@ -357,7 +362,7 @@ function VariantCard({ productId, row, canEdit }: { productId: string; row: Vari
               }}
               className="btn py-2.5 text-granat-700 hover:bg-granat-50"
             >
-              <Trash2 size={15} /> Remover
+              <Trash2 size={15} /> Excluir tom
             </button>
             <Feedback msg={msg} />
           </div>

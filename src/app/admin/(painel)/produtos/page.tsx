@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Plus, Search } from "lucide-react";
+import { Pencil, Plus, Search } from "lucide-react";
+import { DeleteProductButton } from "@/components/admin/DeleteButtons";
 import { ProductImage } from "@/components/store/ProductImage";
 import { Empty, PageHeader } from "@/components/admin/ui";
 import { requireStaff } from "@/lib/auth";
@@ -79,11 +80,8 @@ export default async function ProductsAdmin({ searchParams }: { searchParams: Pr
                   )
                 : null;
             return (
-              <Link
-                key={p.id}
-                href={`/admin/produtos/${p.id}`}
-                className="flex gap-4 rounded-[22px] border border-line bg-white p-3 transition hover:border-granat-400"
-              >
+              <div key={p.id} className="flex flex-col rounded-[22px] border border-line bg-white transition hover:border-granat-400">
+              <Link href={`/admin/produtos/${p.id}`} className="flex gap-4 p-3">
                 <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl">
                   <ProductImage path={cover} name={p.name} />
                 </div>
@@ -112,6 +110,16 @@ export default async function ProductsAdmin({ searchParams }: { searchParams: Pr
                   </div>
                 </div>
               </Link>
+              <div className="mt-auto flex items-center justify-end gap-1 border-t border-line px-2 py-1.5">
+                <Link
+                  href={`/admin/produtos/${p.id}`}
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-granat-950 hover:bg-granat-50"
+                >
+                  <Pencil size={14} /> {isManager ? "Editar" : "Ver"}
+                </Link>
+                {isManager && <DeleteProductButton id={p.id} name={p.name} compact />}
+              </div>
+              </div>
             );
           })}
         </div>

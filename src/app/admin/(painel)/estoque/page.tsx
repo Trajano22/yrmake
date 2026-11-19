@@ -29,7 +29,7 @@ const TYPE_LABEL: Record<string, string> = {
 export default async function StockPage({ searchParams }: { searchParams: Promise<{ filtro?: string; q?: string }> }) {
   const sp = await searchParams;
   const filtro = (sp.filtro && sp.filtro in FILTERS ? sp.filtro : "todos") as keyof typeof FILTERS;
-  const { db } = await requireStaff();
+  const { staff, db } = await requireStaff();
   const q = (sp.q ?? "").replace(/[%_,()*\\]/g, " ").trim().slice(0, 60);
 
   let query = db
@@ -97,11 +97,11 @@ export default async function StockPage({ searchParams }: { searchParams: Promis
               <span className="text-right">Estoque</span>
               <span className="text-right">Reserv.</span>
               <span className="text-right">Disp.</span>
-              <span className="w-[92px]" />
+              <span className="text-right">Ações</span>
             </div>
             <ul className="divide-y divide-line">
               {rows.map((v) => (
-                <StockRow key={v.id} v={v} />
+                <StockRow key={v.id} v={v} canEdit={staff.role !== "staff"} />
               ))}
             </ul>
           </div>

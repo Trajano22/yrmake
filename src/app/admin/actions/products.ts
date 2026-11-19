@@ -195,23 +195,43 @@ export async function saveVariant(
   }
 }
 
-/** Exclui a variação se nunca foi vendida/movimentada; senão, apenas desativa. */
+/** Exclui o tom se nunca foi vendido; se já foi vendido, arquiva (some da loja, histórico fica). */
 export async function removeVariant(variantId: string): Promise<ActionResult> {
   try {
     z.uuid().parse(variantId);
     const { db } = await actionStaff("manager");
-    const { count } = await db
-      .from("product_variants")
-      .select("id", { count: "exact", head: true })
-      .eq("product_id", (await db.from("product_variants").select("product_id").eq("id", variantId).single()).data?.product_id ?? "");
-    if ((count ?? 0) <= 1) return { ok: false, error: "O produto precisa ter pelo menos uma variação." };
-    const { error } = await db.from("product_variants").delete().eq("id", variantId);
-    if (error) {
-      const { error: e2 } = await db.from("product_variants").update({ active: false }).eq("id", variantId);
-      if (e2) throw e2;
-      return { ok: true, message: "Tinha histórico, então foi desativada." };
+    const { data, error } = await db.rpc("delete_variant", { p_variant_id: variantId });
+    if (error) throw error;
+    revalidatePath("/admin", "layout");
+    return {
+      ok: true,
+      message: data === "arquivado" ? "Esse tom já teve vendas, então foi arquivado (sumiu da loja)." : "Tom excluído.",
+    };
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+/** Exclui o produto se nunca foi vendido; se já foi vendido, arquiva. */
+export async function deleteProduct(productId: string): Promise<ActionResult> {
+  try {
+    z.uuid().parse(productId);
+    const { db } = await actionStaff("manager");
+    const { data: imgs } = await db.from("product_images").select("path").eq("product_id", productId);
+    const { data, error } = await db.rpc("delete_product", { p_product_id: productId });
+    if (error) throw error;
+    if (data === "excluido" && imgs?.length) {
+      await db.storage.from("product-images").remove(imgs.map((i) => i.path));
     }
-    return { ok: true };
+    revalidatePath("/admin", "layout");
+    revalidatePath("/", "layout");
+    return {
+      ok: true,
+      message:
+        data === "arquivado"
+          ? "Esse produto já teve vendas, então foi arquivado: sumiu da loja e da lista, e os pedidos antigos continuam certos."
+          : "Produto excluído.",
+    };
   } catch (e) {
     return fail(e);
   }

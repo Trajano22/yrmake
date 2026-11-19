@@ -3,7 +3,9 @@
 import { PGlite } from "@electric-sql/pglite";
 import { readFileSync } from "node:fs";
 
-const migration = readFileSync(new URL("../migrations/0001_inicial.sql", import.meta.url), "utf8");
+const migration = ["0001_inicial.sql", "0002_pix.sql", "0003_excluir.sql"]
+  .map((f) => readFileSync(new URL(`../migrations/${f}`, import.meta.url), "utf8"))
+  .join("\n");
 const demo = null;
 const db = new PGlite();
 
@@ -141,6 +143,28 @@ const results = await Promise.allSettled([
 ]);
 s = await stock();
 ok(results.filter((x) => x.status === "fulfilled").length === 1 && s.reserved === 1, `só um levou (reserved ${s.reserved})`);
+
+console.log("Excluir produto e tom");
+await db.exec(`insert into products (id, name, slug, status) values ('aaaaaaaa-0000-0000-0000-000000000002','Sem Venda','sem-venda','active');
+insert into product_variants (id, product_id, name, sku, price_cents) values
+  ('bbbbbbbb-0000-0000-0000-000000000002','aaaaaaaa-0000-0000-0000-000000000002','A','SV-A',1000),
+  ('bbbbbbbb-0000-0000-0000-000000000003','aaaaaaaa-0000-0000-0000-000000000002','B','SV-B',1000);`);
+await as("authenticated", OWNER, async () => {
+  await db.query(`select adjust_stock('bbbbbbbb-0000-0000-0000-000000000002','entrada',5,'inicial')`);
+  ok(!!(await err(as("authenticated", STRANGER, () => db.query(`select delete_product('aaaaaaaa-0000-0000-0000-000000000002')`)))), "sem perfil não exclui");
+});
+let r = (await as("authenticated", OWNER, () => db.query(`select delete_variant('bbbbbbbb-0000-0000-0000-000000000002') as r`))).rows[0].r;
+ok(r === "excluido", "tom sem venda (com movimentação manual) é excluído");
+ok(!!(await err(as("authenticated", OWNER, () => db.query(`select delete_variant('bbbbbbbb-0000-0000-0000-000000000003')`)))), "não exclui o único tom");
+r = (await as("authenticated", OWNER, () => db.query(`select delete_product('aaaaaaaa-0000-0000-0000-000000000002') as r`))).rows[0].r;
+ok(r === "excluido" && (await db.query(`select count(*)::int c from products where id='aaaaaaaa-0000-0000-0000-000000000002'`)).rows[0].c === 0, "produto sem venda é excluído");
+const eRes = await err(as("authenticated", OWNER, () => db.query(`select delete_product('aaaaaaaa-0000-0000-0000-000000000001')`)));
+ok(eRes && eRes.includes("reservado"), "produto reservado em pedido aberto não sai");
+await db.exec(`update orders set status='cancelado', reservation_active=false; update product_variants set reserved = 0;`);
+r = (await as("authenticated", OWNER, () => db.query(`select delete_product('aaaaaaaa-0000-0000-0000-000000000001') as r`))).rows[0].r;
+const st = (await db.query(`select status from products where id='aaaaaaaa-0000-0000-0000-000000000001'`)).rows[0];
+ok(r === "arquivado" && st.status === "archived", "produto com venda é arquivado (histórico preservado)");
+ok((await db.query(`select count(*)::int c from order_items`)).rows[0].c > 0, "itens de pedidos antigos continuam");
 
 console.log(`\n${pass} ok, ${fail} falhas`);
 process.exit(fail ? 1 : 0);

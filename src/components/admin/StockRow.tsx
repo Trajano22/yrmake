@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Pencil } from "lucide-react";
 import { moveStock } from "@/app/admin/actions/stock";
+import { DeleteVariantButton } from "./DeleteButtons";
 
 type V = {
   id: string;
@@ -17,7 +18,7 @@ type V = {
   products: { id: string; name: string };
 };
 
-export function StockRow({ v }: { v: V }) {
+export function StockRow({ v, canEdit = false }: { v: V; canEdit?: boolean }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [type, setType] = useState<"entrada" | "saida" | "ajuste">("entrada");
@@ -50,9 +51,25 @@ export function StockRow({ v }: { v: V }) {
         <span className="hidden text-right text-sm tabular-nums sm:block">{v.stock}</span>
         <span className="hidden text-right text-sm tabular-nums text-muted sm:block">{v.reserved || "—"}</span>
         <span className={`hidden text-right text-sm tabular-nums sm:block ${tone}`}>{available}</span>
-        <button type="button" onClick={() => setOpen((o) => !o)} className="btn-outline px-4 py-1.5 text-xs">
-          Movimentar
-        </button>
+        <div className="flex items-center justify-end gap-1">
+          <button type="button" onClick={() => setOpen((o) => !o)} className="btn-outline px-4 py-1.5 text-xs">
+            Movimentar
+          </button>
+          {canEdit && (
+            <>
+              <Link
+                href={`/admin/produtos/${v.products.id}`}
+                title="Editar produto e tom"
+                aria-label={`Editar ${v.products.name}`}
+                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs text-granat-950 hover:bg-granat-50"
+              >
+                <Pencil size={14} />
+                <span className="hidden sm:inline">Editar</span>
+              </Link>
+              <DeleteVariantButton id={v.id} label={`${v.products.name} · ${v.name}`} />
+            </>
+          )}
+        </div>
       </div>
       {open && (
         <form

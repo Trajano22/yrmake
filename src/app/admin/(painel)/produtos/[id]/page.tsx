@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft, ExternalLink } from "lucide-react";
+import { DeleteProductButton } from "@/components/admin/DeleteButtons";
 import { ImagesManager } from "@/components/admin/ImagesManager";
 import { ProductDetailsForm, VariantsEditor } from "@/components/admin/ProductForms";
 import { Card, PageHeader } from "@/components/admin/ui";
@@ -29,11 +30,14 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
       <PageHeader
         title={p.name}
         action={
-          p.status === "active" && (
-            <a href={`/produto/${p.slug}`} target="_blank" className="btn-outline py-2.5">
-              <ExternalLink size={15} /> Ver na loja
-            </a>
-          )
+          <div className="flex flex-wrap items-start gap-2">
+            {p.status === "active" && (
+              <a href={`/produto/${p.slug}`} target="_blank" className="btn-outline py-2.5">
+                <ExternalLink size={15} /> Ver na loja
+              </a>
+            )}
+            {canEdit && <DeleteProductButton id={p.id} name={p.name} goToList />}
+          </div>
         }
       />
       <div className="grid gap-6 xl:grid-cols-[1fr_380px]">
