@@ -27,6 +27,10 @@ export default async function SettingsPage() {
           min_order: s.min_order_cents ? centsToInput(s.min_order_cents) : "",
           reservation_hours: String(s.reservation_hours),
           accepting_orders: s.accepting_orders,
+          pix_key_type: s.pix_key_type ?? "",
+          pix_key: s.pix_key ?? "",
+          pix_receiver_name: s.pix_receiver_name ?? "",
+          pix_city: s.pix_city ?? "Manaus",
         }}
       />
     </>

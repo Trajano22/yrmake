@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { actionStaff, fail, type ActionResult } from "@/lib/auth";
 import { parseCents } from "@/lib/money";
+import { normalizePixKey } from "@/lib/pix";
 
 function slugify(s: string) {
   return s
@@ -46,6 +47,16 @@ const settingsSchema = z.object({
   min_order: optMoney,
   reservation_hours: z.coerce.number().int().min(1, "Reserva: mínimo 1 hora.").max(168, "Reserva: máximo 168 horas."),
   accepting_orders: z.boolean(),
+  pix_key_type: z.enum(["", "cpf", "cnpj", "email", "telefone", "aleatoria"]),
+  pix_key: z.string().trim().max(77),
+  pix_receiver_name: z.string().trim().max(60),
+  pix_city: z.string().trim().max(30),
+}).superRefine((v, ctx) => {
+  if (!v.pix_key) return;
+  if (!v.pix_key_type) ctx.addIssue({ code: "custom", message: "Escolha o tipo da chave PIX." });
+  else if (!normalizePixKey(v.pix_key_type, v.pix_key))
+    ctx.addIssue({ code: "custom", message: "Chave PIX inválida para o tipo escolhido." });
+  if (!v.pix_receiver_name) ctx.addIssue({ code: "custom", message: "Informe o nome do recebedor do PIX." });
 });
 
 export async function saveSettings(input: z.input<typeof settingsSchema>): Promise<ActionResult> {

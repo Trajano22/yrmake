@@ -6,7 +6,9 @@ import { Bike, Check, Loader2, MessageCircle, Store } from "lucide-react";
 import { createOrder } from "@/app/(loja)/finalizar/actions";
 import { brl } from "@/lib/money";
 import type { OrderSummary } from "@/lib/types";
+import { pixForOrder, type PixConfig } from "@/lib/pix";
 import { orderMessage, whatsappLink } from "@/lib/whatsapp";
+import { PixPayment } from "./PixPayment";
 import { useCart } from "./CartProvider";
 import { useCartSync } from "./CartView";
 
@@ -18,6 +20,7 @@ type Settings = {
   pickupHours: string;
   city: string;
   whatsapp: string;
+  pix: PixConfig;
 };
 
 const PROFILE_KEY = "yr-checkout-profile";
@@ -37,7 +40,8 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
   const [payment, setPayment] = useState<"pix" | "dinheiro" | "cartao">("pix");
   const [form, setForm] = useState({ name: "", phone: "", address: "", neighborhood: "", ref: "", notes: "" });
   const [error, setError] = useState("");
-  const [done, setDone] = useState<{ order: OrderSummary; link: string } | null>(null);
+  const [done, setDone] = useState<{ order: OrderSummary; link: string; pix: string | null } | null>(null);
+  const pixReady = Boolean(pixForOrder(settings.pix, 100, "TESTE"));
   const [pending, start] = useTransition();
   const key = useRef<string>("");
 
@@ -83,13 +87,17 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
         const { name, phone, address, neighborhood, ref } = form;
         localStorage.setItem(PROFILE_KEY, JSON.stringify({ name, phone, address, neighborhood, ref }));
       } catch {}
-      const link = whatsappLink(res.whatsapp || settings.whatsapp, orderMessage(res.order));
-      setDone({ order: res.order, link });
+      const pix = res.order.payment_method === "pix" ? pixForOrder(settings.pix, res.order.total_cents, res.order.code) : null;
+      const link = whatsappLink(res.whatsapp || settings.whatsapp, orderMessage(res.order, { pixPaid: Boolean(pix) }));
+      setDone({ order: res.order, link, pix });
       clear();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
 
+  if (done && done.pix) {
+    return <PixPayment order={done.order} pixCode={done.pix} whatsappLink={done.link} hasWhatsapp={Boolean(settings.whatsapp)} />;
+  }
   if (done) return <Success order={done.order} link={done.link} hasWhatsapp={Boolean(settings.whatsapp)} />;
   if (!ready) return <div className="h-60 animate-pulse rounded-3xl bg-blush" />;
   if (!items.length) {
@@ -205,7 +213,11 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
 
         <fieldset className="mt-8">
           <legend className="font-serif text-2xl text-granat-950">Pagamento</legend>
-          <p className="mt-1 text-xs text-muted">Você paga depois de confirmar com a gente pelo WhatsApp.</p>
+          <p className="mt-1 text-xs text-muted">
+            {payment === "pix" && pixReady
+              ? "Na próxima tela aparece o QR Code do PIX com o valor certinho."
+              : "Você paga depois de confirmar com a gente pelo WhatsApp."}
+          </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {(
               [
@@ -268,7 +280,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
         )}
         <button type="submit" disabled={pending || !checked || !settings.acceptingOrders} className="btn-whatsapp mt-6 h-12 w-full">
           {pending ? <Loader2 size={18} className="animate-spin" /> : <MessageCircle size={18} />}
-          {pending ? "Registrando…" : "Enviar pedido pelo WhatsApp"}
+          {pending ? "Registrando…" : payment === "pix" && pixReady ? "Finalizar e pagar com PIX" : "Enviar pedido pelo WhatsApp"}
         </button>
         <p className="mt-3 text-center text-[11px] leading-relaxed text-muted">
           Os produtos ficam reservados para você por um tempo. Usamos seus dados só para este pedido —{" "}

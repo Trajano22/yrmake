@@ -19,6 +19,10 @@ type S = {
   min_order: string;
   reservation_hours: string;
   accepting_orders: boolean;
+  pix_key_type: "" | "cpf" | "cnpj" | "email" | "telefone" | "aleatoria";
+  pix_key: string;
+  pix_receiver_name: string;
+  pix_city: string;
 };
 
 export function SettingsForm({ initial }: { initial: S }) {
@@ -76,6 +80,37 @@ export function SettingsForm({ initial }: { initial: S }) {
           {Field({ k: "min_order", label: "Pedido mínimo (R$)", inputMode: "decimal", placeholder: "vazio = sem mínimo" })}
           <div className="sm:col-span-2">{Field({ k: "pickup_address", label: "Endereço de retirada", hint: "Vazio = usa o endereço da loja." })}</div>
           {Field({ k: "pickup_hours", label: "Horário de retirada", placeholder: "Seg a sáb, 9h às 18h" })}
+        </div>
+      </section>
+
+      <section className="rounded-[24px] border border-line bg-white p-5">
+        <h2 className="font-serif text-2xl">PIX</h2>
+        <p className="mb-4 text-xs text-muted">
+          Com isso preenchido, quem escolhe PIX vê o QR Code com o valor do pedido. O dinheiro cai direto na sua conta, sem
+          taxa. Confira o pagamento no banco e clique em “Marcar como pago” no pedido.
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="label">Tipo da chave</label>
+            <select
+              value={s.pix_key_type}
+              onChange={(e) => {
+                setS({ ...s, pix_key_type: e.target.value as S["pix_key_type"] });
+                setMsg(null);
+              }}
+              className="input"
+            >
+              <option value="">PIX desligado</option>
+              <option value="cpf">CPF</option>
+              <option value="cnpj">CNPJ</option>
+              <option value="telefone">Celular</option>
+              <option value="email">E-mail</option>
+              <option value="aleatoria">Chave aleatória</option>
+            </select>
+          </div>
+          {Field({ k: "pix_key", label: "Chave PIX", maxLength: 77 })}
+          {Field({ k: "pix_receiver_name", label: "Nome do recebedor", maxLength: 60, hint: "Como aparece no banco quando te pagam." })}
+          {Field({ k: "pix_city", label: "Cidade do recebedor", maxLength: 30 })}
         </div>
       </section>
 

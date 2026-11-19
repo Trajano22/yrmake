@@ -17,6 +17,10 @@ const DEFAULT_SETTINGS: PublicSettings = {
   free_delivery_min_cents: null,
   min_order_cents: 0,
   accepting_orders: false,
+  pix_key_type: "",
+  pix_key: "",
+  pix_receiver_name: "",
+  pix_city: "Manaus",
 };
 
 export const getSettings = cache(async (): Promise<PublicSettings> => {

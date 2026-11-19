@@ -43,6 +43,10 @@ export type PublicSettings = {
   free_delivery_min_cents: number | null;
   min_order_cents: number;
   accepting_orders: boolean;
+  pix_key_type: string;
+  pix_key: string;
+  pix_receiver_name: string;
+  pix_city: string;
 };
 
 export type OrderStatus =

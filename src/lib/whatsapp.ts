@@ -7,9 +7,11 @@ export function whatsappLink(phone: string, text: string) {
 }
 
 /** Mensagem pronta que a cliente envia para a loja depois de criar o pedido. */
-export function orderMessage(o: OrderSummary) {
+export function orderMessage(o: OrderSummary, opts: { pixPaid?: boolean } = {}) {
   const lines = [
-    `Olá! Acabei de fazer o pedido *${o.code}* pelo site 💕`,
+    opts.pixPaid
+      ? `Olá! Fiz o pedido *${o.code}* pelo site e já paguei no PIX 💕 Segue o comprovante.`
+      : `Olá! Acabei de fazer o pedido *${o.code}* pelo site 💕`,
     "",
     ...o.items.map(
       (i) =>
