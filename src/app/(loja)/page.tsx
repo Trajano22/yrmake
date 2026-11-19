@@ -24,11 +24,9 @@ export default async function Home() {
 
         <div className="container-x relative flex flex-col items-center py-16 text-center sm:py-24">
           <p className="eyebrow animate-fade-up">Maquiagem · Skincare · Acessórios</p>
-          <h1 className="mt-5 animate-fade-up font-serif text-[44px] leading-[1.02] font-medium text-granat-950 [animation-delay:80ms] sm:text-7xl">
+          <h1 className="mt-5 animate-fade-up font-serif text-[44px] leading-[1.05] font-normal tracking-[-0.01em] text-granat-950 [animation-delay:80ms] sm:text-7xl">
             Sua beleza,
-            <span className="mt-1 block font-script text-[64px] leading-[1.1] font-normal text-granat-600 sm:text-[104px]">
-              do seu jeito
-            </span>
+            <span className="block font-script text-granat-600">do seu jeito</span>
           </h1>
           <svg aria-hidden viewBox="0 0 220 24" className="mt-1 w-48 animate-fade-up text-granat-400 [animation-delay:160ms]">
             <path d="M2 12 H90" stroke="currentColor" strokeWidth="1.2" />
@@ -74,14 +72,12 @@ export default async function Home() {
 
       {/* DESTAQUES */}
       <section className="container-x pt-14">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">{featured.length ? "Queridinhos" : "Novidades"}</p>
-            <h2 className="mt-2 font-serif text-4xl text-granat-950 sm:text-5xl">
-              Essa semana tem <span className="font-script text-granat-600">novidades</span>
-            </h2>
-          </div>
-          <Link href="/produtos" className="hidden shrink-0 items-center gap-1 text-sm text-granat-700 hover:underline sm:inline-flex">
+        <div className="relative mb-8 text-center">
+          <h2 className="section-title">{featured.length ? "Mais amados" : "Novidades da semana"}</h2>
+          <Link
+            href="/produtos"
+            className="absolute right-0 top-1/2 hidden -translate-y-1/2 items-center gap-1 text-xs uppercase tracking-[0.16em] text-granat-700 hover:underline sm:inline-flex"
+          >
             Ver tudo <ArrowRight size={14} />
           </Link>
         </div>
@@ -105,8 +101,7 @@ export default async function Home() {
       <section className="container-x pt-24">
         <div className="rounded-[36px] bg-blush px-6 py-12 sm:px-12">
           <div className="text-center">
-            <p className="eyebrow">Simples assim</p>
-            <h2 className="mt-2 font-serif text-4xl text-granat-950">Como comprar</h2>
+            <h2 className="section-title">Como comprar</h2>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">
             {[
@@ -121,7 +116,7 @@ export default async function Home() {
                     {i + 1}
                   </span>
                 </div>
-                <h3 className="mt-4 font-serif text-2xl text-granat-950">{t}</h3>
+                <h3 className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-granat-950">{t}</h3>
                 <p className="mt-1 max-w-[16rem] text-sm text-muted">{d}</p>
               </div>
             ))}
@@ -141,7 +136,7 @@ function Sparkle({ className = "" }: { className?: string }) {
 function EmptyShowcase() {
   return (
     <div className="rounded-[28px] border border-dashed border-granat-200 bg-blush px-6 py-16 text-center">
-      <p className="font-script text-4xl text-granat-600">Em breve</p>
+      <p className="font-script text-3xl text-granat-600">Em breve</p>
       <p className="mt-2 text-sm text-muted">Estamos arrumando a vitrine. Volte daqui a pouquinho!</p>
     </div>
   );

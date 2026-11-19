@@ -103,7 +103,7 @@ export function CheckoutForm({ settings }: { settings: Settings }) {
   if (!items.length) {
     return (
       <div className="rounded-[28px] bg-blush px-6 py-16 text-center">
-        <p className="font-script text-5xl text-granat-600">Carrinho vazio</p>
+        <p className="font-script text-4xl text-granat-600">Carrinho vazio</p>
         <Link href="/produtos" className="btn-primary mt-6">
           Ver produtos
         </Link>
@@ -299,7 +299,7 @@ function Success({ order, link, hasWhatsapp }: { order: OrderSummary; link: stri
       </div>
       <p className="mt-6 eyebrow">Pedido {order.code}</p>
       <h1 className="mt-2 font-serif text-4xl text-granat-950">
-        Falta <span className="font-script text-5xl text-granat-600">só um toque</span>
+        Falta <span className="font-script text-4xl text-granat-600">só um toque</span>
       </h1>
       <p className="mt-4 text-[15px] text-muted">
         Seu pedido foi registrado. Agora envie a mensagem no WhatsApp para a gente confirmar com você.

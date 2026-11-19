@@ -14,8 +14,9 @@
   --color-muted: #7a5560;
   --color-line: #f1dbe0;
 
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-script: var(--font-vibes), "Great Vibes", cursive;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  /* "script" agora é a própria serifa em itálico (estilo editorial, sem letra cursiva) */
+  --font-script: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
 
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -37,13 +38,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.font-script {
+  font-style: italic;
+  font-weight: 400;
+}
+
 ::selection {
   background: var(--color-granat-200);
   color: var(--color-granat-950);
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-medium uppercase tracking-[0.16em] transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility section-title {
+  @apply font-sans text-sm font-medium uppercase tracking-[0.28em] text-granat-950 sm:text-base;
 }
 @utility btn-primary {
   @apply btn bg-granat-700 text-white shadow-[0_8px_24px_-12px_rgba(146,23,51,0.7)] hover:bg-granat-800 active:scale-[0.98];

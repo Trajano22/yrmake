@@ -44,7 +44,7 @@ export function PixPayment({
     <div className="mx-auto max-w-lg py-4 text-center animate-fade-up">
       <p className="eyebrow">Pedido {order.code}</p>
       <h1 className="mt-2 font-serif text-4xl text-granat-950">
-        Pague com <span className="font-script text-5xl text-granat-600">PIX</span>
+        Pague com <span className="font-script text-4xl text-granat-600">PIX</span>
       </h1>
       <p className="mt-3 font-serif text-4xl text-granat-700">{brl(order.total_cents)}</p>
 

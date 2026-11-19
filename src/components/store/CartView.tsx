@@ -48,7 +48,7 @@ export function CartView({ freeDeliveryMin, minOrder }: { freeDeliveryMin: numbe
   if (!items.length) {
     return (
       <div className="mt-8 rounded-[28px] bg-blush px-6 py-16 text-center">
-        <p className="font-script text-5xl text-granat-600">Vazio por aqui</p>
+        <p className="font-script text-4xl text-granat-600">Vazio por aqui</p>
         <p className="mt-2 text-sm text-muted">Que tal escolher um batom novo?</p>
         <Link href="/produtos" className="btn-primary mt-6">
           Ver produtos

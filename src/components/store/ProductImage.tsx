@@ -33,7 +33,7 @@ export function ProductImage({
       className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_20%,#fff_0%,#fce3e8_45%,#f2a9b7_100%)] [container-type:inline-size] ${className}`}
     >
       <span className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/50 blur-2xl" />
-      <span className="px-[6%] text-center font-script text-[min(3.5rem,22cqw)] leading-none text-granat-700/80">{word}</span>
+      <span className="px-[6%] text-center font-script text-[min(2.6rem,16cqw)] leading-none text-granat-700/80">{word}</span>
     </div>
   );
 }

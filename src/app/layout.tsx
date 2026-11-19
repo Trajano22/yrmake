@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Great_Vibes, Jost } from "next/font/google";
+import { Jost, Playfair_Display } from "next/font/google";
 import { SITE_URL } from "@/lib/env";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  variable: "--font-playfair",
 });
-const vibes = Great_Vibes({ subsets: ["latin"], weight: "400", variable: "--font-vibes" });
 const jost = Jost({ subsets: ["latin"], variable: "--font-jost" });
 
 export const metadata: Metadata = {
@@ -23,7 +22,7 @@ export const viewport: Viewport = { themeColor: "#921733" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${vibes.variable} ${jost.variable}`}>
+    <html lang="pt-BR" className={`${playfair.variable} ${jost.variable}`}>
       <body className="min-h-dvh">{children}</body>
     </html>
   );
